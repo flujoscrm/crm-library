@@ -8,11 +8,15 @@ Se debe tener instalado [Node.Js](https://nodejs.org/en "Link de instalacion"), 
 
 Una cuenta de github para realizar los commits y crear tags para el deploy.
 
-## Pasos 
+## Pasos
 
 El primer paso para la utilización de la libreria es instalar las dependencias con `npm install`.
 
 Esto habilita la posibilidad de realizar ediciones para luego posteriormente compilarlo.
+
+**¿Como empaqueto mis cambios realizados?**
+
+Para logar esto solo se necesita realizar `npm run build`, que crea una carpeta **dist** con el archivo empaquetado de la libreria con el nombre **index.min.js**
 
 **¿Como hago deploy de una nueva versión?**
 
@@ -20,7 +24,7 @@ Para lograr esto se llega a una convención que todos las versiones deben crears
 
 Una vez en la rama ***main***, se realiza `git tag -a vX.X.X -m "Mensaje relevante de la version"`.
 
-Luego se sube el tag creado con `git push origin vX.X.X` 
+Luego se sube el tag creado con `git push origin vX.X.X`
 
 ## Nomenclatura de versiones
 
