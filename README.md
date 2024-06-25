@@ -25,9 +25,9 @@ el cual contiene el archivo empaquetado de la librería con el nombre **index.mi
 Para lanzar una nueva versión, se crea un release de la rama **main**. 
 La rama **main** debe contener los últimos cambios ya testeados.
 
-Una vez listos los cambios en **main**, desde la interfáz de GitHub se utiliza la opción "Create a new release". 
+Una vez listos los cambios en **main**, desde la interfáz de GitHub se utiliza la opción **Create a new release**. 
 Al crear un nuevo tag con el número de versión, es importante seguir las convenciones especificadas más adelante. 
-Finaliza se utiliza la opción "Publish release". 
+Finalmente se procede con la publicación utilizando la opción **Publish release**. 
 
 Al realizar la publicación, el CDN automáticamente toma los cambios y disponibiliza la nueva versión.
 
