@@ -22,12 +22,14 @@ el cual contiene el archivo empaquetado de la librería con el nombre **index.mi
 
 ### ¿Cómo hago deploy de una nueva versión?
 
-Para lanzar una nueva versión, se debe crear un release de la rama **main**, 
-el cual debe contener los últimos cambios ya testeados.
+Para lanzar una nueva versión, se crea un release de la rama **main**. 
+La rama **main** debe contener los últimos cambios ya testeados.
 
-Una vez en la rama **main**, se realiza `git tag -a vX.X.X -m "Mensaje relevante de la version"`.
+Luego, desde la interfáz de GitHub se utiliza la opción de "Create a new release". Al crear 
+un nuevo tag con el número de versión, es importante seguir las convenciones especificadas más adelante. 
+Luego se finaliza el release con la opción "Publish release". 
 
-Luego se sube el tag creado con `git push origin vX.X.X`.
+Al realizar la publicación, el CDN automáticamente toma los cambios y disponibiliza la nueva versión.
 
 ## Nomenclatura de versiones (SemVer)
 
@@ -42,7 +44,7 @@ Siendo:
 
 1. Major: Se incrementa cuando la version ya no será compatible con una versión anterior.
 2. Minor: Se incrementa cuando se añade funcionalidad nueva compatible con la versión anterior.
-3. Patch: Se incrementa cuando se añade correciones compatibles con la versión anterior.
+3. Patch: Se incrementa cuando se añade correcciones compatibles con la versión anterior.
 
 Ejemplo:
 
