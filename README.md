@@ -1,34 +1,40 @@
-# Libreria de funciones globales para flujos
+# Librería de funciones globales para flujos
 
-Esta es una libreria de funciones que podran ser utilizadas en formularios custom, evitando asi la repetición de codigo.
+Esta es una librería de funciones que podrán ser utilizadas en formularios custom, evitando asi la repetición de código y mejorando la mantenibilidad en general.
 
 ## Requerimientos
 
-Se debe tener instalado [Node.Js](https://nodejs.org/en "Link de instalacion"), para la instalacion de los paquetes.
+Se debe tener instalado [Node.js](https://nodejs.org/ "Sitio Web oficial de Node.js"), para la 
+instalación de los paquetes.
 
 Una cuenta de github para realizar los commits y crear tags para el deploy.
 
-## Pasos
+## Desarrollo
 
-El primer paso para la utilización de la libreria es instalar las dependencias con `npm install`.
+El primer paso para desarrollar la librería es instalar las dependencias con `npm install`.
 
-Esto habilita la posibilidad de realizar ediciones para luego posteriormente compilarlo.
+Esto habilita la posibilidad de realizar ediciones para luego compilarlo.
 
-**¿Como empaqueto mis cambios realizados?**
+### ¿Cómo empaqueto mis cambios realizados?
 
-Para logar esto solo se necesita realizar `npm run build`, que crea una carpeta **dist** con el archivo empaquetado de la libreria con el nombre **index.min.js**
+Para lograr esto solo se necesita realizar `npm run build`, que crea una carpeta **dist**, 
+el cual contiene el archivo empaquetado de la librería con el nombre **index.min.js**
 
-**¿Como hago deploy de una nueva versión?**
+### ¿Cómo hago deploy de una nueva versión?
 
-Para lograr esto se llega a una convención que todos las versiones deben crearse desde la rama ***main.*** Que contiene los ultimos cambios ya testeados de los features añadidos.
+Para lanzar una nueva versión, se debe crear un release de la rama **main**, 
+el cual debe contener los últimos cambios ya testeados.
 
-Una vez en la rama ***main***, se realiza `git tag -a vX.X.X -m "Mensaje relevante de la version"`.
+Una vez en la rama **main**, se realiza `git tag -a vX.X.X -m "Mensaje relevante de la version"`.
 
-Luego se sube el tag creado con `git push origin vX.X.X`
+Luego se sube el tag creado con `git push origin vX.X.X`.
 
-## Nomenclatura de versiones
+## Nomenclatura de versiones (SemVer)
 
-Para crear un nuevo tag se necesita conocer acerca de la nomenclatura correcta de versiones. Para el caso se describe:
+Para crear un nuevo tag se necesita conocer acerca de la nomenclatura correcta de 
+versiones ([SemVer](https://semver.org/ "Portal de Semantic Versioning")). 
+
+Para el caso se describe:
 
 **vMAJOR.MINOR.PATCH**
 
@@ -42,4 +48,23 @@ Ejemplo:
 
 - Cambios incompatibles (MAJOR): Cambias de v1.2.3 a 2.0.0
 - Nuevas funcionalidades (MINOR): Cambias de v1.2.3 a v1.3.0
-- Correciones de errores (PATCH): Cambias de v1.2.3 a v1.2.4
+- Correcciones de errores (PATCH): Cambias de v1.2.3 a v1.2.4
+
+## Inclusión con CDN
+
+Como CDN utilizamos jsDelivr. El URL definido es relativo al repositorio GitHub.
+
+Para incluir la última versión, el URL es:
+
+```
+https://cdn.jsdelivr.net/gh/flujoscrm/crm-library/dist/index.min.js
+```
+
+También es posible, y recomendable, especificar una versión en particular. Teniendo 
+en cuenta la nomenclatura SemVer, se puede especificar a nivel de MAJOR, MINOR, o PATCH release:
+
+```
+https://cdn.jsdelivr.net/gh/flujoscrm/crm-library@1/dist/index.min.js
+https://cdn.jsdelivr.net/gh/flujoscrm/crm-library@1.2/dist/index.min.js
+https://cdn.jsdelivr.net/gh/flujoscrm/crm-library@1.2.3/dist/index.min.js
+```
