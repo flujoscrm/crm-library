@@ -19,7 +19,7 @@ import {
 
 import { convertToBase64, downloadPdf } from './file';
 
-export {
+const crmLibrary = {
   WEEKDAYS,
   MONTHS,
   getToday,
@@ -36,3 +36,9 @@ export {
   convertToBase64,
   downloadPdf,
 };
+
+if (typeof window !== 'undefined') {
+  window.crmLibrary = crmLibrary;
+}
+
+export default crmLibrary;

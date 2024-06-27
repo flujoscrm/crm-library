@@ -6,8 +6,9 @@ module.exports = {
   output: {
     filename: 'index.min.js',
     path: path.resolve(__dirname, 'dist'),
-    library: '$',
+    library: 'crmLibrary',
     libraryTarget: 'umd',
+    globalObject: 'this',
   },
   module: {
     rules: [
@@ -15,6 +16,9 @@ module.exports = {
         test: /\.(js)$/,
         use: 'babel-loader',
         exclude: /node_modules/,
+        options: {
+          presets: ['@babel/preset-env'],
+        },
       },
     ],
   },
