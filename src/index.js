@@ -19,26 +19,7 @@ import {
 
 import { convertToBase64, downloadPdf } from './file';
 
-const crmLibrary = {
-  WEEKDAYS,
-  MONTHS,
-  getToday,
-  getNow,
-  getDayOfWeekMonthYear,
-  getAtlasToken,
-  getData,
-  getPropsInfo,
-  getCurrentStep,
-  getCorrelationId,
-  buildUrls,
-  getInitialValues,
-  getGlobalVariables,
-  convertToBase64,
-  downloadPdf,
+
+export const helloWorld = () => {
+  console.log('FUNCIONA :D');
 };
-
-if (typeof window !== 'undefined') {
-  window.crmLibrary = crmLibrary;
-}
-
-export default crmLibrary;

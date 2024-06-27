@@ -8,17 +8,18 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     library: 'crmLibrary',
     libraryTarget: 'umd',
-    globalObject: 'this',
   },
   module: {
     rules: [
       {
         test: /\.(js)$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
-        options: {
-          presets: ['@babel/preset-env'],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
         },
+        exclude: /node_modules/,
       },
     ],
   },
