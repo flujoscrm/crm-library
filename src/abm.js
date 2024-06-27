@@ -5,7 +5,7 @@ import { getToday } from './date';
 export const getFormFields = async (props, form) => {
   const { registerUrl, token, tokenUrl } = getInitialValues(props);
   const payload = {
-    nombrTabla: 'CONF_CAMPOS',
+    nombreTabla: 'CONF_CAMPOS',
     columnas: [
       { nombreObjeto: 'FORMULARIO', valor: form },
       { nombreObjeto: 'ACTIVO', valor: 'S' },
