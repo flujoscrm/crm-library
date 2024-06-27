@@ -19,7 +19,20 @@ import {
 
 import { convertToBase64, downloadPdf } from './file';
 
-
-export const helloWorld = () => {
-  console.log('FUNCIONA :D');
+export {
+  WEEKDAYS,
+  MONTHS,
+  getToday,
+  getNow,
+  getDayOfWeekMonthYear,
+  getAtlasToken,
+  getData,
+  getPropsInfo,
+  getCurrentStep,
+  getCorrelationId,
+  buildUrls,
+  getInitialValues,
+  getGlobalVariables,
+  convertToBase64,
+  downloadPdf,
 };
