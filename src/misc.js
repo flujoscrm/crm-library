@@ -99,3 +99,5 @@ export const getGlobalVariables = async (
   };
   return getData(url, payload, token, tokenUrl, 'POST', today, true);
 };
+
+export const stringToBoolean = string => string === 'S';
