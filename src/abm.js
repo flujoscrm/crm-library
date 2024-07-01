@@ -23,7 +23,7 @@ export const getFormFields = async (props, form) => {
   );
 };
 
-export const obtenerRegistros = async (props, payload) => {
+export const obtainRegisters = async (props, payload) => {
   const { registerUrl, token, tokenUrl } = getInitialValues(props);
   return getData(
     registerUrl,
