@@ -1,3 +1,6 @@
+const flowProps = props;
+import { getToday } from './date';
+
 /**
  * Obtiene información relevante de las props.
  * @param {Object} props - Las props del flujo.
@@ -98,6 +101,12 @@ export const getGlobalVariables = async (
     variableKeys: variables,
   };
   return getData(url, payload, token, tokenUrl, 'POST', today, true);
+};
+
+export const getFlowVariables = async variables => {
+  const { token, variablesUrl, tokenUrl, correlationId } = getInitialValues(flowProps);
+  const today = getToday();
+  return getGlobalVariables(variablesUrl, correlationId, token, variables, tokenUrl, today);
 };
 
 export const stringToBoolean = string => string === 'S';
