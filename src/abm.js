@@ -22,3 +22,16 @@ export const getFormFields = async (props, form) => {
     true
   );
 };
+
+export const obtenerRegistros = async (props, payload) => {
+  const { registerUrl, token, tokenUrl } = getInitialValues(props);
+  return getData(
+    registerUrl,
+    payload,
+    token,
+    tokenUrl,
+    'POST',
+    getToday(),
+    true
+  );
+}
