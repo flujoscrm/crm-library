@@ -1,5 +1,6 @@
 const flowProps = props;
 import { getToday } from './date';
+import { getData } from './auth';
 
 /**
  * Obtiene información relevante de las props.
@@ -85,7 +86,6 @@ export const getInitialValues = props => {
  * // Ejemplo de obtenecion de variables globales
  * const gVariables = await getGlobalVariables(variablesUrl, correlationId, token, ['variablesGlobales', 'codPersona'], tokenUrl, today);
  */
-import { getData } from './auth';
 export const getGlobalVariables = async (
   variablesUrl,
   correlationId,
@@ -103,6 +103,11 @@ export const getGlobalVariables = async (
   return getData(url, payload, token, tokenUrl, 'POST', today, true);
 };
 
+/**
+ * Funcion para obtener variables del flujo
+ * @param {Array} variables - Lista de variables en string.
+ * @returns {Promise<Object>} - Una promesa que resuelve con las variables globales del flujo.
+ */
 export const getFlowVariables = async variables => {
   const { token, variablesUrl, tokenUrl, correlationId } = getInitialValues(flowProps);
   const today = getToday();

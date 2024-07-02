@@ -12,7 +12,6 @@
  * @param {string} payload.columnas[].nombreObjeto - Nombre del objeto de la columna.
  * @param {string} payload.columnas[].valor - Valor asociado al objeto de la columna.
  * @returns {Promise<string|null>} - Una promesa que resuelve con el token para hacer requests a la API de Atlas o `null` en caso de error.
- * @throws {Error} - Lanza un error si la solicitud fetch falla.
  * @example
  * //Ejemplo de uso de getAtlasToken
  * const {token, tokenUrl} = getInitialValues(props);
