@@ -2,7 +2,7 @@ import {
   getToday,
   getNow,
   getDayOfWeekMonthYear,
-} from '../src/index';
+} from '../src/date.js';
 import { describe, expect, it } from '@jest/globals';
 
 describe('getToday', () => {

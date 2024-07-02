@@ -4,7 +4,7 @@ Esta es una librería de funciones que podrán ser utilizadas en formularios cus
 
 ## Requerimientos
 
-Se debe tener instalado [Node.js](https://nodejs.org/ "Sitio Web oficial de Node.js"), para la 
+Se debe tener instalado [Node.js](https://nodejs.org/ "Sitio Web oficial de Node.js"), para la
 instalación de los paquetes.
 
 Una cuenta de github para realizar los commits y crear tags para el deploy.
@@ -15,26 +15,36 @@ El primer paso para desarrollar la librería es instalar las dependencias con `n
 
 Esto habilita la posibilidad de realizar ediciones para luego compilarlo.
 
+### Arquitectura de la libreria
+
+Donde principalmente se estaria realizando cambios son en la carpeta **src** y **test** donde en la primera se tiene un archivo .js con el nombre relacionado a las funciones que contiene, ejemplo: date.js contiene funciones relacionadas a fecha , hora , etc. 
+
+En cambio en la segunda carpeta se tienen archivos de test unitarios por cada modulo, esto garantiza que el cambio que realizemos sea retrocompatible con versiones anteriores, o en todo caso nos indica que la versión ya no es compatible con versiones anteriores.
+
 ### ¿Cómo empaqueto mis cambios realizados?
 
-Para lograr esto solo se necesita realizar `npm run build`, que crea una carpeta **dist**, 
+Para lograr esto solo se necesita realizar `npm run build`, que crea una carpeta **dist**,
 el cual contiene el archivo empaquetado de la librería con el nombre **index.min.js**
 
 ### ¿Cómo hago deploy de una nueva versión?
 
-Para lanzar una nueva versión, se crea un release de la rama **main**. 
+Para lanzar una nueva versión, se crea un release de la rama **main**.
 La rama **main** debe contener los últimos cambios ya testeados.
 
-Una vez listos los cambios en **main**, desde la interfáz de GitHub se utiliza la opción **Create a new release**. 
-Al crear un nuevo tag con el número de versión, es importante seguir las convenciones especificadas más adelante. 
-Finalmente se procede con la publicación utilizando la opción **Publish release**. 
+Una vez listos los cambios en **main**, desde la interfáz de GitHub se utiliza la opción **Create a new release**.
+Al crear un nuevo tag con el número de versión, es importante seguir las convenciones especificadas más adelante.
+Finalmente se procede con la publicación utilizando la opción **Publish release**.
 
 Al realizar la publicación, el CDN automáticamente toma los cambios y disponibiliza la nueva versión.
 
+### ¿Como ejecuto un test?
+
+Para ejecutar un test simplemente se debe ejecutar `npm run test` luego de haber instalado los paquetes.
+
 ## Nomenclatura de versiones (SemVer)
 
-Para crear un nuevo tag se necesita conocer acerca de la nomenclatura correcta de 
-versiones ([SemVer](https://semver.org/ "Portal de Semantic Versioning")). 
+Para crear un nuevo tag se necesita conocer acerca de la nomenclatura correcta de
+versiones ([SemVer](https://semver.org/ "Portal de Semantic Versioning")).
 
 Para el caso se describe:
 
@@ -62,7 +72,7 @@ Para incluir la última versión, el URL es:
 https://cdn.jsdelivr.net/gh/flujoscrm/crm-library/dist/index.min.js
 ```
 
-También es posible, y recomendable, especificar una versión en particular. Teniendo 
+También es posible, y recomendable, especificar una versión en particular. Teniendo
 en cuenta la nomenclatura SemVer, se puede especificar a nivel de MAJOR, MINOR, o PATCH release:
 
 ```
