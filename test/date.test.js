@@ -2,8 +2,6 @@ import {
   getToday,
   getNow,
   getDayOfWeekMonthYear,
-  convertToBase64,
-  downloadPdf,
 } from '../src/index';
 import { describe, expect, it } from '@jest/globals';
 
