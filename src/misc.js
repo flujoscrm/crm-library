@@ -1,4 +1,3 @@
-const flowProps = props;
 import { getToday } from './date';
 import { getData } from './auth';
 
@@ -108,8 +107,8 @@ export const getGlobalVariables = async (
  * @param {Array} variables - Lista de variables en string.
  * @returns {Promise<Object>} - Una promesa que resuelve con las variables globales del flujo.
  */
-export const getFlowVariables = async variables => {
-  const { token, variablesUrl, tokenUrl, correlationId } = getInitialValues(flowProps);
+export const getFlowVariables = async (props,variables) => {
+  const { token, variablesUrl, tokenUrl, correlationId } = getInitialValues(props);
   const today = getToday();
   return getGlobalVariables(variablesUrl, correlationId, token, variables, tokenUrl, today);
 };

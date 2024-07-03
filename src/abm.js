@@ -4,7 +4,7 @@ import { getToday } from './date';
 
 /**
  * Obtiene los campos activos de un formulario desde la base de datos
- * @param {*} props - Las props del flujo. TODO: Revisar si se puede acceder a los props desde el window. #1 const flowProps = props;
+ * @param {*} props - Las props del flujo.
  * @param {*} form - El nombre del formulario a obtener.
  * @returns {Promise<Array>} - Una promesa que resuelve con la respuesta del ABM.
  */
@@ -31,7 +31,7 @@ export const getFormFields = async (props, form) => {
 
 /**
  * Funcion para obtener registros del ABM.
- * @param {Object} props - Las props del flujo. TODO: Revisar si se puede acceder a los props desde el window. #1 const flowProps = props;
+ * @param {Object} props - Las props del flujo.
  * @param {Object} payload - Datos a enviar en el cuerpo de la solicitud.
  * @returns {Promise<Object>} - Una promesa que resuelve con los registros del ABM.
  * @example
