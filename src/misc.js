@@ -99,7 +99,7 @@ export const getGlobalVariables = async (
     correlationId,
     variableKeys: variables,
   };
-  return getData(url, payload, token, tokenUrl, 'POST', today, true);
+  return getData(url, payload, token, tokenUrl, 'POST', today, false);
 };
 
 /**
