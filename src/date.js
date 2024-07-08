@@ -90,3 +90,16 @@ export const getDayOfWeekMonthYear = dateString => {
     month: monthName,
   };
 };
+
+
+/**
+ * Obtiene el día de la semana, el mes y el año de una fecha dada en formato "yyyy-mm-dd".
+ * @param {Date} date - El objeto Date.
+ * @returns {String} - String en formato "dd/mm/yyyy".
+ */
+export const dateToString = date => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${day}/${month}/${year}`;
+};
