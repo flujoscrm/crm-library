@@ -6,15 +6,17 @@ import { getToday } from './date';
  * Obtiene los campos activos de un formulario desde la base de datos
  * @param {*} props - Las props del flujo.
  * @param {*} form - El nombre del formulario a obtener.
+ * @param {Array} extraColumns - Columnas extra a filtrar. [{nombreObjeto: 'NOMBRE', valor: 'VALOR'}]
  * @returns {Promise<Array>} - Una promesa que resuelve con la respuesta del ABM.
  */
-export const getFormFields = async (props, form) => {
+export const getFormFields = async (props, form, extraColumns = []) => {
   const { registerUrl, token, tokenUrl } = getInitialValues(props);
   const payload = {
     nombreTabla: 'CONF_CAMPOS',
     columnas: [
       { nombreObjeto: 'FORMULARIO', valor: form },
       { nombreObjeto: 'ACTIVO', valor: 'S' },
+      ...extraColumns,
     ],
   };
 
