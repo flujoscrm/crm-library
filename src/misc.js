@@ -1,5 +1,5 @@
-import { getToday } from './date';
-import { getData } from './auth';
+import { getToday } from './date.js';
+import { getData } from './auth.js';
 
 /**
  * Obtiene información relevante de las props.
@@ -48,6 +48,7 @@ export const buildUrls = config => {
     tokenUrl: `${API_URL}/v1/integration/Imple/GetToken`,
     registerUrl: `${API_URL}/v1/integration/Imple/obtener-registros`,
     variablesUrl: `${API_URL_FLOWS}/api/v1/flows-engine/variables`,
+    executeUrl: `https://10.50.4.28:8080/clientes-atlas/v1.5.0/clientes/execute-dinamico`
   };
 };
 

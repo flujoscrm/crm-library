@@ -19,7 +19,7 @@
  * const payload = {nombreTabla: 'VISTA', columnas: [{nombreObjeto: '', valor: ''}]};
  * const atlasToken = await getAtlasToken(token, today, tokenUrl, payload);
  */
-export const getAtlasToken = async (token, today, tokenUrl, payload = {}) => {
+export const getAtlasToken = async (token, today, tokenUrl, url, payload = {}) => {
   const header = {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`,
@@ -28,7 +28,7 @@ export const getAtlasToken = async (token, today, tokenUrl, payload = {}) => {
   const body = {
     user: 'admin',
     date: today,
-    url: '/clientes/obtener-registros',
+    url: url || '/clientes/obtener-registros',
     requestBody: JSON.stringify(payload),
     method: 'POST',
   };
@@ -75,7 +75,7 @@ export const getData = async (
   today,
   forAtlas = false
 ) => {
-  const atlasToken = await getAtlasToken(token, today, tokenUrl, payload);
+  const atlasToken = await getAtlasToken(token, today, tokenUrl, '', payload);
   if (!atlasToken) return null;
   let header = {
     'Content-Type': 'application/json',

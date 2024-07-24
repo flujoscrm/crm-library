@@ -1,6 +1,6 @@
-import { getInitialValues } from './misc';
-import { getData } from './auth';
-import { getToday } from './date';
+import { getInitialValues } from './misc.js';
+import { getData, getAtlasToken } from './auth.js';
+import { getToday } from './date.js';
 
 /**
  * Obtiene los campos activos de un formulario desde la base de datos
@@ -9,14 +9,14 @@ import { getToday } from './date';
  * @param {string} configType - Tipo de campo a ser recuperado.
  * @returns {Promise<Array>} - Una promesa que resuelve con la respuesta del ABM.
  */
-export const getFormFields = async (props, form, configType ) => {
+export const getFormFields = async (props, form, configType) => {
   const { registerUrl, token, tokenUrl } = getInitialValues(props);
   const payload = {
     nombreTabla: 'CONF_CAMPOS',
     columnas: [
       { nombreObjeto: 'FORMULARIO', valor: form },
       { nombreObjeto: 'ACTIVO', valor: 'S' },
-      { nombreObjeto: "TIPO_CONF", valor: configType },
+      { nombreObjeto: 'TIPO_CONF', valor: configType },
     ],
   };
 
@@ -56,4 +56,41 @@ export const obtainRegisters = async (props, payload) => {
     getToday(),
     true
   );
+};
+
+export const dynamicExecute = async (props, payload) => {
+  const { token, tokenUrl, executeUrl } = getInitialValues(props);
+  const today = getToday();
+  const url = 'clientes/execute-dinamico';
+  const atlasToken = await getAtlasToken(token, today, tokenUrl, url, payload);
+
+  const headers = {
+    'Content-Type': 'application/json',
+    'X-RshkMichi-ApiKey':
+      'YOUR_TOKEN',
+    'X-Atl-Timestamp': today,
+    'X-Atl-Auth': atlasToken,
+  };
+
+  const options = {
+    headers,
+    body: JSON.stringify(payload),
+    method: 'POST'
+  };
+
+  try {
+    const response = await fetch(executeUrl, options);
+    if (!response.ok) {
+      console.error('Error en la solicitud:', {
+        status: response?.status,
+        statusText: response?.statusText,
+        payload,
+      });
+      return { ...response, ok: false };
+    }
+    return response.json();
+  } catch (error) {
+    console.log('Error realizando el execute dinamico:', error);
+    return {};
+  }
 };
