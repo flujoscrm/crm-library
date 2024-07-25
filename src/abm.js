@@ -58,16 +58,15 @@ export const obtainRegisters = async (props, payload) => {
   );
 };
 
-export const dynamicExecute = async (props, payload) => {
+export const dynamicExecute = async (props, payload, apiKey) => {
   const { token, tokenUrl, executeUrl } = getInitialValues(props);
   const today = getToday();
-  const url = 'clientes/execute-dinamico';
+  const url = '/clientes/execute-dinamico';
   const atlasToken = await getAtlasToken(token, today, tokenUrl, url, payload);
 
   const headers = {
     'Content-Type': 'application/json',
-    'X-RshkMichi-ApiKey':
-      'YOUR_TOKEN',
+    'X-RshkMichi-ApiKey': apiKey,
     'X-Atl-Timestamp': today,
     'X-Atl-Auth': atlasToken,
   };
@@ -75,7 +74,7 @@ export const dynamicExecute = async (props, payload) => {
   const options = {
     headers,
     body: JSON.stringify(payload),
-    method: 'POST'
+    method: 'POST',
   };
 
   try {
