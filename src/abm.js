@@ -93,3 +93,12 @@ export const dynamicExecute = async (props, payload, apiKey) => {
     return {};
   }
 };
+
+
+export const buildAbmAccionarBody = (action, table, columns) => {
+  return {
+    accion: action,
+    tabla: table,
+    columnas: columns
+  }
+}
