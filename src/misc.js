@@ -43,12 +43,14 @@ export const getCorrelationId = (notification, currentStep) => {
 export const buildUrls = config => {
   const API_URL = config?.API_URL || '';
   const API_URL_FLOWS = config?.API_URL_FLOWS || '';
+  const SECURE_URL = 'https://secure5.atlas.com.py:8080';
 
   return {
     tokenUrl: `${API_URL}/v1/integration/Imple/GetToken`,
+    fetchUrl: `${API_URL}/v1/integration/Imple/GenericExternalApi`,
     registerUrl: `${API_URL}/v1/integration/Imple/obtener-registros`,
     variablesUrl: `${API_URL_FLOWS}/api/v1/flows-engine/variables`,
-    executeUrl: `'https://secure5.atlas.com.py:8080/clientes-atlas/v1.5.0/clientes/execute-dinamico';`
+    executeUrl: `${SECURE_URL}/clientes-atlas/v1.5.0/clientes/execute-dinamico`,
   };
 };
 
@@ -71,7 +73,6 @@ export const getInitialValues = props => {
     ...urls,
   };
 };
-
 
 /**
  * Obtiene las variables globales del flujo
@@ -108,10 +109,18 @@ export const getGlobalVariables = async (
  * @param {Array} variables - Lista de variables en string.
  * @returns {Promise<Object>} - Una promesa que resuelve con las variables globales del flujo.
  */
-export const getFlowVariables = async (props,variables) => {
-  const { token, variablesUrl, tokenUrl, correlationId } = getInitialValues(props);
+export const getFlowVariables = async (props, variables) => {
+  const { token, variablesUrl, tokenUrl, correlationId } =
+    getInitialValues(props);
   const today = getToday();
-  return getGlobalVariables(variablesUrl, correlationId, token, variables, tokenUrl, today);
+  return getGlobalVariables(
+    variablesUrl,
+    correlationId,
+    token,
+    variables,
+    tokenUrl,
+    today
+  );
 };
 
 export const stringToBoolean = string => string === 'S';

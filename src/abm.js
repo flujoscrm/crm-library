@@ -89,16 +89,55 @@ export const dynamicExecute = async (props, payload, apiKey) => {
     }
     return response.json();
   } catch (error) {
-    console.log('Error realizando el execute dinamico:', error);
+    console.error('Error realizando el execute dinamico:', error);
     return {};
   }
 };
 
+export const fetchAtlas = async (props, options) => {
+  const { fetchUrl } = getInitialValues(props);
+  const { data, requesturi, urlversionuri, baseuri, method, user } = options;
+
+  const body = {
+    data,
+    requesturi,
+    urlversionuri,
+    baseuri,
+    typemethod: {
+      method,
+    },
+    user,
+  };
+
+  try {
+    const response = await fetch(fetchUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      console.error('Error en la solicitud:', {
+        status: response?.status,
+        statusText: response?.statusText,
+        body,
+      });
+      return { ...response, ok: false };
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error('Error realizando la solicitud:', error);
+    return {};
+  }
+};
 
 export const buildAbmAccionarBody = (action, table, columns) => {
   return {
     accion: action,
     tabla: table,
-    columnas: columns
-  }
-}
+    columnas: columns,
+  };
+};
