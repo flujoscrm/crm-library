@@ -19,22 +19,31 @@
  * const payload = {nombreTabla: 'VISTA', columnas: [{nombreObjeto: '', valor: ''}]};
  * const atlasToken = await getAtlasToken(token, today, tokenUrl, payload);
  */
-export const getAtlasToken = async (token, today, tokenUrl, url, payload = {}) => {
+export const getAtlasToken = async (
+  token,
+  today,
+  tokenUrl,
+  url,
+  payload = {},
+  user = null
+) => {
   const header = {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
   };
 
+  const userName = user ? user : "admin";
+
   const body = {
-    user: 'admin',
+    user: userName,
     date: today,
-    url: url || '/clientes/obtener-registros',
+    url: url || "/clientes/obtener-registros",
     requestBody: JSON.stringify(payload),
-    method: 'POST',
+    method: "POST",
   };
 
   const options = {
-    method: 'POST',
+    method: "POST",
     headers: header,
     body: JSON.stringify(body),
   };
@@ -43,17 +52,15 @@ export const getAtlasToken = async (token, today, tokenUrl, url, payload = {}) =
     const response = await fetch(tokenUrl, options);
     return await response.text();
   } catch (error) {
-    console.error('Error obteniendo el token de Atlas:', {
+    console.error("Error obteniendo el token de Atlas:", {
       message: error?.message,
       stack: error?.stack,
       tokenUrl,
       payload,
     });
-    return '';
+    return "";
   }
 };
-
-
 
 /**
  * Obtiene datos de las API's
@@ -75,10 +82,10 @@ export const getData = async (
   today,
   forAtlas = false
 ) => {
-  const atlasToken = await getAtlasToken(token, today, tokenUrl, '', payload);
+  const atlasToken = await getAtlasToken(token, today, tokenUrl, "", payload);
   if (!atlasToken) return null;
   let header = {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   };
 
   if (token) {
@@ -109,7 +116,7 @@ export const getData = async (
 
   const response = await fetch(url, options);
   if (!response.ok) {
-    console.error('Error en la solicitud:', {
+    console.error("Error en la solicitud:", {
       status: response?.status,
       statusText: response?.statusText,
       url,
@@ -118,7 +125,7 @@ export const getData = async (
       today,
       forAtlas,
     });
-    return { ...response, ok: false};
+    return { ...response, ok: false };
   }
   return response.json();
 };
